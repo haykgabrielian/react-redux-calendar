@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 import styled from "styled-components";
 import selector, {IStoreProps} from "services/selector";
 
-import {EVENT_COLORS, PAGE_NAME} from "configs/constants";
+import {EVENT_COLORS} from "configs/constants";
+import {History} from "history";
 
 import {CalendarEvents} from "modules/application/ApplicationReducer";
 import {eventCreate, eventStatusUpdate, eventDelete} from "modules/application/ApplicationActions";
@@ -19,6 +20,7 @@ interface ICalendarDayPageProps extends IStoreProps {
     eventStatusUpdate: (id: number, completed: boolean) => void,
     eventDelete: (id: number) => void,
     location: Location,
+    history: History,
 }
 
 interface ICalendarDayPageState {
@@ -35,30 +37,35 @@ const selectorVariables = {
 const CalendarDayHeader = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    width: 100%;
     height: 40px;
     padding: 0 10px;
 `;
 
 const HeaderInfo = styled.div`
-    
+    margin: 0 auto 0 20px;
 `;
 
 const IconContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     cursor: pointer;
+    -webkit-text-stroke: 3px #fff;
     &:hover {
       background-color: #eaeaea;
+      -webkit-text-stroke: 3px #eaeaea;
     }
 `;
 
 const AddIcon = styled.i`
-    -webkit-text-stroke: 1px white;
+    color: #2d5376;
+    cursor: pointer;
+    font-size: 25px;
 `;
 
 const EventItemContainer = styled.div`
@@ -78,6 +85,12 @@ const DeleteAction = styled.i`
     height: 24px;
     color: #78d97f;
     cursor: pointer;
+`;
+
+const BackAction = styled.i`
+    color: #2d5376;
+    cursor: pointer;
+    font-size: 25px;
 `;
 
 const CompleteAction = styled.i`
@@ -203,6 +216,11 @@ class CalendarDayPage extends React.PureComponent<ICalendarDayPageProps, ICalend
         this.handleDeletePopupClose();
     };
 
+    handleBackClick = () => {
+        const {history} = this.props;
+        history.push(`/`);
+    };
+
     render(): JSX.Element {
         const { location: {pathname}, events, eventCreate } = this.props;
         const todayEvents = events && events.filter(item => pathname.includes(item.date));
@@ -211,6 +229,9 @@ class CalendarDayPage extends React.PureComponent<ICalendarDayPageProps, ICalend
         return (
             <div>
                 <CalendarDayHeader>
+                    <IconContainer onClick={this.handleAddPopupShow}>
+                        <BackAction onClick={this.handleBackClick} className="fa fa-arrow-left" aria-hidden="true"/>
+                    </IconContainer>
                     <HeaderInfo>{`Total Tasks for ${date}`}</HeaderInfo>
                     <IconContainer onClick={this.handleAddPopupShow}>
                         <AddIcon className="fa fa-plus" aria-hidden="true"/>
