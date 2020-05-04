@@ -114,9 +114,13 @@ export default function SideBar(props: ISideBarProps) {
     const { className, events } = props;
 
     const todayEvents = events && events.filter(event => {
-        const currentDay = new Date().getDate(),
-              day = event.date.split('-')[2];
-        return (currentDay === +day) ;
+        const currentDay = new Date().getDate();
+        const currentMonth = new Date().getMonth() + 1,
+
+              day = event.date.split('-')[2],
+              month = event.date.split('-')[1];
+        console.log();
+        return (currentDay === +day && +month == currentMonth) ;
     });
 
     return (
