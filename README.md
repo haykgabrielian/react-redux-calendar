@@ -1,2 +1,1 @@
 # react-redux-calendar
-Calendar 

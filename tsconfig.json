@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es5",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016",
+      "es2017"
+    ],
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "components/*": [
+        "src/components/*"
+      ],
+      "containers/*": [
+        "src/containers/*"
+      ],
+      "services/*": [
+        "src/services/*"
+      ],
+      "helpers/*": [
+        "src/helpers/*"
+      ],
+      "configs/*": [
+        "src/configs/*"
+      ],
+      "modules/*": [
+        "src/modules/*"
+      ],
+      "ajaxRequests/*": [
+        "src/ajax-requests/*"
+      ],
+      "assets/*" : [
+        "src/assets/*"
+      ],
+      "types/*" : [
+        "src/types/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "public"
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}
