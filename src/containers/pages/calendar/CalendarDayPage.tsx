@@ -229,8 +229,8 @@ class CalendarDayPage extends React.PureComponent<ICalendarDayPageProps, ICalend
         return (
             <div>
                 <CalendarDayHeader>
-                    <IconContainer onClick={this.handleAddPopupShow}>
-                        <BackAction onClick={this.handleBackClick} className="fa fa-arrow-left" aria-hidden="true"/>
+                    <IconContainer onClick={this.handleBackClick}>
+                        <BackAction className="fa fa-arrow-left" aria-hidden="true"/>
                     </IconContainer>
                     <HeaderInfo>{`Total Tasks for ${date}`}</HeaderInfo>
                     <IconContainer onClick={this.handleAddPopupShow}>
