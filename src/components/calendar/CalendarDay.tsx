@@ -29,7 +29,7 @@ const Container = styled.div<{ today: boolean; }>`
     flex: 1 1 14.2%;
     min-height: 100px;
     padding: 0 5px;
-    background: ${props => props.today ? '#f1f1f1;' : '#FFF;'}
+    background: ${props => props.today ? "#f1f1f1;" : "#FFF;"}
     border: 1px solid #eaeaea;
 `;
 
@@ -49,7 +49,7 @@ const TodayNumber = styled.div`
     }
 `;
 
-const EventTitleText= styled.div`
+const EventTitleText = styled.div`
     text-align: left;
     font-size: 12px;
     color: #fff;
@@ -91,7 +91,6 @@ export default class CalendarDay extends React.Component<ICalendarDayProps, ICal
             showPopup: !prevState.showPopup
         }));
     };
-
 
     render(): JSX.Element {
         const { className, today, day, events, onDayPageOpen, month } = this.props;

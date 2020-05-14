@@ -4,6 +4,7 @@
     "tslint-react"
   ],
   "rules": {
+    "jsx-wrap-multiline": false,
     "ordered-imports": false,
     "max-line-length": [
       true,
@@ -22,14 +23,15 @@
     "no-var-requires": false,
     "no-conditional-assignment": false,
     "jsx-no-multiline-js": false,
+    "jsx-alignment": false,
+    "jsx-no-lambda": false,
     "no-string-literal": false,
+    "one-variable-per-declaration": [true, "ignore-for-loop"],
     "typedef": [
       true,
       "call-signature",
       "parameter",
-      "member-variable-declaration",
-      "property-declaration",
-      "object-destructuring"
+      "property-declaration"
     ],
     "only-arrow-functions": false,
     "no-console": false,

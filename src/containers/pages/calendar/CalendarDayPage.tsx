@@ -14,7 +14,6 @@ import {eventCreate, eventStatusUpdate, eventDelete} from "modules/application/A
 import AddEventPopUp from "components/calendar/AddEventPopUp";
 import ConfirmationPopup from "components/common/ConfirmationPopup"
 
-
 interface ICalendarDayPageProps extends IStoreProps {
     eventCreate: (event: CalendarEvents) => void,
     eventStatusUpdate: (id: number, completed: boolean) => void,
@@ -153,7 +152,7 @@ const Status = styled.div`
 
 const StatusText: any = styled.div<{ completed: boolean; }>`
     font-size: 12px;
-    color: ${props => props.completed ? '#afafaf;' : '#2d5376;'}
+    color: ${props => props.completed ? "#afafaf;" : "#2d5376;"}
 `;
 
 const TitleRow = styled.div`
@@ -177,8 +176,7 @@ const Description = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
    -webkit-line-clamp: 4;
-   -webkit-box-orient: vertical;
-    
+    -webkit-box-orient: vertical;
 `;
 
 class CalendarDayPage extends React.PureComponent<ICalendarDayPageProps, ICalendarDayPageState> {
@@ -188,7 +186,7 @@ class CalendarDayPage extends React.PureComponent<ICalendarDayPageProps, ICalend
     };
 
     componentWillMount(): void {
-        document.title = 'Calendar';
+        document.title = "Calendar";
     }
 
     handleDeletePopupShow = (id: number) => {
@@ -224,7 +222,7 @@ class CalendarDayPage extends React.PureComponent<ICalendarDayPageProps, ICalend
     render(): JSX.Element {
         const { location: {pathname}, events, eventCreate } = this.props;
         const todayEvents = events && events.filter(item => pathname.includes(item.date));
-        const date = pathname.substring(pathname.lastIndexOf('/') + 1);
+        const date = pathname.substring(pathname.lastIndexOf("/") + 1);
         const handleEventDelete = () => this.handleEventDelete(this.state.deletePopup);
         return (
             <div>
@@ -241,7 +239,7 @@ class CalendarDayPage extends React.PureComponent<ICalendarDayPageProps, ICalend
                     {
                         todayEvents && todayEvents.length > 0 ?
                             (
-                                todayEvents.map( day => {
+                                todayEvents.map(day => {
                                     const onStatusUpdate = () => this.handleEventStatusUpdate(day.id);
                                     const onDeletePopupShow = () => this.handleDeletePopupShow(day.id);
                                     return (
@@ -255,7 +253,7 @@ class CalendarDayPage extends React.PureComponent<ICalendarDayPageProps, ICalend
                                                     <IconContainer>
                                                         {day.completed && <CheckIcon className="fa fa-check" aria-hidden="true"/>}
                                                     </IconContainer>
-                                                    <StatusText completed={day.completed}>{day.completed ? "Completed" : 'Open'}</StatusText>
+                                                    <StatusText completed={day.completed}>{day.completed ? "Completed" : "Open"}</StatusText>
                                                 </Status>
                                             </TitleRow>
                                             <Description>{day.description}</Description>
@@ -277,8 +275,8 @@ class CalendarDayPage extends React.PureComponent<ICalendarDayPageProps, ICalend
                     this.state.deletePopup != null && <ConfirmationPopup
                         handlePopupClose={this.handleDeletePopupClose}
                         handlePopupConfirm={handleEventDelete}
-                        title='Delete'
-                        description='Are you sure you want to delete?'
+                        title="Delete"
+                        description="Are you sure you want to delete?"
                     />
                 }
             </div>

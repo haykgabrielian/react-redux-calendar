@@ -2,14 +2,7 @@
 
 import * as React from "react";
 
-interface IPageNotFoundProps {
-}
-
-
-interface IPageNotFoundState {
-}
-
-export default class PageNotFound extends React.PureComponent<IPageNotFoundProps, IPageNotFoundState> {
+export default class PageNotFound extends React.PureComponent {
 
     componentDidMount(): void {
         document.title = "Page Not Found";
@@ -24,4 +17,3 @@ export default class PageNotFound extends React.PureComponent<IPageNotFoundProps
         );
     }
 }
-

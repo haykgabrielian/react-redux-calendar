@@ -11,10 +11,6 @@ interface ICalendarSearchProps  {
     handleEventsSearch: (query: string) => void,
 }
 
-interface ICalendarSearchState {
-
-}
-
 const SearchContainer = styled.div`
     position: relative;
     margin: 0 0 0 30px;
@@ -65,7 +61,6 @@ const EventRowColor: any = styled.div<{ color: number; }>`
      height: 100%;
 `;
 
-
 const Title = styled.div`
     width: 100%;
     padding: 0 15px 0 0;
@@ -86,7 +81,7 @@ const Status = styled.div`
 
 const StatusText: any = styled.div<{ completed: boolean; }>`
     font-size: 12px;
-    color: ${props => props.completed ? '#afafaf;' : '#2d5376;'}
+    color: ${props => props.completed ? "#afafaf;" : "#2d5376;"}
 `;
 
 const TitleRow = styled.div`
@@ -113,10 +108,10 @@ const Description = styled.div`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    
+
 `;
 
-export default class CalendarSearch extends React.PureComponent<ICalendarSearchProps, ICalendarSearchState> {
+export default class CalendarSearch extends React.PureComponent<ICalendarSearchProps> {
 
     handleSearchChange = (e) => {
         const { handleEventsSearch } = this.props;
@@ -131,7 +126,7 @@ export default class CalendarSearch extends React.PureComponent<ICalendarSearchP
                 <StyledUl>
                     {
                         searchedEvents != null &&
-                        searchedEvents.map( event =>
+                        searchedEvents.map(event =>
                             <EventRow key={event.id}>
                                 <EventRowColor color={event.color}/>
                                 <TitleRow>
@@ -140,7 +135,7 @@ export default class CalendarSearch extends React.PureComponent<ICalendarSearchP
                                         <IconContainer>
                                             {event.completed && <CheckIcon className="fa fa-check" aria-hidden="true"/>}
                                         </IconContainer>
-                                        <StatusText completed={event.completed}>{event.completed ? "Completed" : 'Open'}</StatusText>
+                                        <StatusText completed={event.completed}>{event.completed ? "Completed" : "Open"}</StatusText>
                                     </Status>
                                 </TitleRow>
                                 <Description>{event.description}</Description>

@@ -151,14 +151,13 @@ const ErrorMessage = styled.div`
     color: #fa7e7f;
 `;
 
-
 export default class AddEventPopUp extends React.Component<IAddEventPopUpProps, IAddEventPopUpState> {
     state = {
         selectedOption: 1,
         error: false,
         event: {
-            title: '',
-            description: '',
+            title: "",
+            description: "",
         },
     };
 
@@ -192,17 +191,17 @@ export default class AddEventPopUp extends React.Component<IAddEventPopUpProps, 
 
     handleEventAdd = () => {
         const { event: { title, description }, selectedOption } = this.state;
-        if (title == "" || description == "") {
-            this.setState( { error: true });
+        if (title === "" || description === "") {
+            this.setState({ error: true });
             return;
         }
         const id = Date.now();
 
         const event = {
-            id: id,
+            id,
             date: this.props.date,
-            title: title,
-            description: description,
+            title,
+            description,
             color: selectedOption,
             completed: false,
         };
@@ -224,25 +223,25 @@ export default class AddEventPopUp extends React.Component<IAddEventPopUpProps, 
                         <RadioContainer>
                             <RadioItem>
                                 <StyledInputRadio type="radio" value={1}
-                                                  checked={this.state.selectedOption == 1}
+                                                  checked={this.state.selectedOption === 1}
                                                   onChange={this.handleOptionChange}/>
                                 <RadioColor1/>
                             </RadioItem>
                             <RadioItem>
                                 <StyledInputRadio type="radio" value={2}
-                                                  checked={this.state.selectedOption == 2}
+                                                  checked={this.state.selectedOption === 2}
                                                   onChange={this.handleOptionChange} />
                                 <RadioColor2/>
                             </RadioItem>
                             <RadioItem>
                                 <StyledInputRadio type="radio" value={3}
-                                                  checked={this.state.selectedOption == 3}
+                                                  checked={this.state.selectedOption === 3}
                                                   onChange={this.handleOptionChange} />
                                 <RadioColor3/>
                             </RadioItem>
                             <RadioItem>
                                 <StyledInputRadio type="radio" value={4}
-                                                  checked={this.state.selectedOption == 4}
+                                                  checked={this.state.selectedOption === 4}
                                                   onChange={this.handleOptionChange} />
                                 <RadioColor4/>
                             </RadioItem>

@@ -60,7 +60,6 @@ const LeftIcon = styled.i`
     -webkit-text-stroke: 1px white;
 `;
 
-
 export default class Header extends React.Component<IHeaderProps> {
     render(): JSX.Element {
         const { className, handleMonthChange, currentDate, allEvents, completedEvents, searchedEvents} = this.props;
@@ -71,7 +70,7 @@ export default class Header extends React.Component<IHeaderProps> {
                     <CalendarSearch handleEventsSearch={this.props.handleEventsSearch} searchedEvents={searchedEvents} />
                 </HeaderEventInfo>
                 <HeaderNavigation>
-                    <Date>{currentDate.format('MMMM YYYY')} </Date>
+                    <Date>{currentDate.format("MMMM YYYY")} </Date>
                     <IconContainer onClick={() => handleMonthChange(-1)}>
                         <LeftIcon className="fa fa-chevron-left" aria-hidden="true"/>
                     </IconContainer>

@@ -57,7 +57,6 @@ const EventsList = styled.div`
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
-    
 `;
 
 const Title = styled.div`
@@ -80,7 +79,7 @@ const Status = styled.div`
 
 const StatusText: any = styled.div<{ completed: boolean; }>`
     font-size: 12px;
-    color: ${props => props.completed ? '#afafaf;' : '#2d5376;'}
+    color: ${props => props.completed ? "#afafaf;" : "#2d5376;"}
 `;
 
 const TitleRow = styled.div`
@@ -107,20 +106,19 @@ const Description = styled.div`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    
+
 `;
 
-export default function SideBar(props: ISideBarProps) {
+const SideBar = (props: ISideBarProps) => {
     const { className, events } = props;
 
     const todayEvents = events && events.filter(event => {
         const currentDay = new Date().getDate();
-        const currentMonth = new Date().getMonth() + 1,
+        const currentMonth = new Date().getMonth() + 1;
 
-              day = event.date.split('-')[2],
-              month = event.date.split('-')[1];
-        console.log();
-        return (currentDay === +day && +month == currentMonth) ;
+        const day = event.date.split("-")[2];
+        const month = event.date.split("-")[1];
+        return (currentDay === +day && +month === currentMonth) ;
     });
 
     return (
@@ -128,7 +126,7 @@ export default function SideBar(props: ISideBarProps) {
             <SideBarTitle>Today's Agenda</SideBarTitle>
             <EventsList>
                 {todayEvents && todayEvents.length > 0 &&
-                    todayEvents.map( event => {
+                    todayEvents.map(event => {
                         const { title, description, id } = event;
                         return (
                             <EventRow key={id}>
@@ -139,7 +137,7 @@ export default function SideBar(props: ISideBarProps) {
                                         <IconContainer>
                                             {event.completed && <CheckIcon className="fa fa-check" aria-hidden="true"/>}
                                         </IconContainer>
-                                        <StatusText completed={event.completed}>{event.completed ? "Completed" : 'Open'}</StatusText>
+                                        <StatusText completed={event.completed}>{event.completed ? "Completed" : "Open"}</StatusText>
                                     </Status>
                                 </TitleRow>
                                 <Description>{description}</Description>
@@ -150,5 +148,6 @@ export default function SideBar(props: ISideBarProps) {
             </EventsList>
         </SideBarContainer>
     )
-}
+};
 
+export default SideBar

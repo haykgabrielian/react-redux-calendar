@@ -69,7 +69,7 @@ const IconContainer = styled.div`
 const TitleRow: any = styled.div<{ completed: boolean; }>`
     display: flex;
     align-content: flex-start;
-    color: ${props => props.completed ? '#afafaf;' : '#2d5376;'}
+    color: ${props => props.completed ? "#afafaf;" : "#2d5376;"}
     margin: 8px 0 0 0;
     min-height: 18px;
     width: 100%;
@@ -79,7 +79,7 @@ const TitleRow: any = styled.div<{ completed: boolean; }>`
     overflow: hidden;
 `;
 
-export default function DayPopup(props: ISideBarProps) {
+const DayPopup = (props: ISideBarProps) => {
     const { className, events, day, month, handlePopupToggle } = props;
     const preventDefault = (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
@@ -93,14 +93,14 @@ export default function DayPopup(props: ISideBarProps) {
             <Month>{month}</Month>
             <Day>{day}</Day>
             {
-                events.map( event => <TitleRow key={event.id} completed={event.completed}>
+                events.map(event => <TitleRow key={event.id} completed={event.completed}>
                     <IconContainer>
                         {event.completed && <CheckIcon className="fa fa-check" aria-hidden="true"/>}
                     </IconContainer>
                     {event.title}
-                </TitleRow>)
-            }
+                </TitleRow>)}
         </Container>
     )
-}
+};
 
+export default DayPopup
